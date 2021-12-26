@@ -29,15 +29,17 @@ public class Tracking implements Listener{
 		Player p = e.getPlayer();
 		Material m = e.getItem().getType();
 		Action a = e.getAction();
+		Location loc = Bukkit.getPlayer(this.plugin.hunted).getLocation();
+		
+		double dist = Math.sqrt(Math.pow(loc.getX()-p.getLocation().getX(), 2)+Math.pow(loc.getY()-p.getLocation().getY(), 2));
 		
 		if(m == Material.COMPASS & (a == Action.RIGHT_CLICK_AIR || a == Action.RIGHT_CLICK_BLOCK)) {
 			if(Bukkit.getPlayer(this.plugin.hunted).getWorld().getEnvironment().equals(World.Environment.NETHER)) {
-				Location loc = Bukkit.getPlayer(this.plugin.hunted).getLocation();
 				p.sendMessage(this.plugin.hunted+" is currently in the nether at: "+fmt.format(loc.getX())+" "+fmt.format(loc.getY())+" "+fmt.format(loc.getZ()));
 			} else {
 				Player hunted = p.getServer().getPlayer(this.plugin.hunted);
 				p.setCompassTarget(hunted.getLocation());
-				p.sendMessage("You are now tracking "+this.plugin.hunted);
+				p.sendMessage("You are now tracking "+this.plugin.hunted+" who is "+fmt.format(dist)+" blocks away.");
 			}
 		} 
 	}

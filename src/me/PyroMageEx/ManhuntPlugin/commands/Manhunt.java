@@ -29,7 +29,7 @@ public class Manhunt implements CommandExecutor{
 		
 		//Set new hunted player's effects
 		this.plugin.hunted = args[0];
-		Player hntd = Bukkit.getPlayer(this.plugin.hunted);	
+		Player hntd = Bukkit.getPlayer(this.plugin.hunted);
 		Bukkit.broadcastMessage(ChatColor.GOLD+""+ChatColor.BOLD+this.plugin.hunted+" is now being hunted!");
 		hntd.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 100000, 1));
 		return true;
