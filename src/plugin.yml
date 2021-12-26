@@ -1,0 +1,10 @@
+name: Manhunt
+version: 1.0
+author: PyroMageEx
+main: me.PyroMageEx.ManhuntPlugin.Main
+description: Manhunt.
+
+commands:
+  track:
+    aliases: [hunt]
+    description: Hunts specified person
